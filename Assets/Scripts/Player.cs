@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private float jumpSpeed;
     [SerializeField]
     private GameObject prefabFireball;
+
+    private GameObject otherPlayer;
     private Rigidbody2D rb;
 
 
@@ -17,6 +19,17 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach(GameObject player in players)
+        {
+            if(player != gameObject)
+            {
+                otherPlayer = player;
+                break;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -76,7 +89,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             GameObject fireball = Instantiate(prefabFireball);
-            fireball.GetComponent<Fireball>().ally = gameObject;
+            fireball.GetComponent<Fireball>().opponent = otherPlayer;
             fireball.transform.position = transform.position;
         }
     }
