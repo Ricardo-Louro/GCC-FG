@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        
+
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         foreach(GameObject player in players)
@@ -74,12 +74,12 @@ public class Player : MonoBehaviour
         else if (Input.GetKey("s"))
         {
             
-            currentScale[1] = .75f;
+            currentScale[1] = .5f;
             transform.localScale = currentScale;
         }
         else if (Input.GetKeyUp("s"))
         {
-            currentScale[1] = 1.5f;
+            currentScale[1] = 1;
             transform.localScale = currentScale;
         }
     }

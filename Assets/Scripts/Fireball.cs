@@ -19,6 +19,9 @@ public class Fireball : MonoBehaviour
         else
         {
             rb.velocity = new Vector2(-5, 0);
+            Vector3 currentScale = gameObject.transform.localScale;
+            currentScale[0] = -1;
+            gameObject.transform.localScale = currentScale;
         }
     }
 
@@ -34,7 +37,6 @@ public class Fireball : MonoBehaviour
             Debug.Log("HIT OPPONENT!");
             Destroy(gameObject);
         }
-
         else if(other.GetComponent<Fireball>() is not null)
         {
             Debug.Log("FIREBALLS COLLIDED!");
